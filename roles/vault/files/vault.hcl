@@ -5,8 +5,8 @@ storage "file" {
 }
 
 listener "tcp" {
-  address = "o.o.o.o:8200"
+  address     = "o.o.o.o:8200"
   tls_disable = 1
-
+}
 
 
