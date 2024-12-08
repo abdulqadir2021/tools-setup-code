@@ -22,16 +22,17 @@ resource "vault_mount" "roboshop-dev" {
   description = "Roboshop Dev Secrets"
 }
 
-
 resource "vault_generic_secret" "roboshop-dev" {
   path = "${vault_mount.roboshop-dev.path}/frontend"
 
   data_json = <<EOT
 
 {
-  "foo":    "bar",
-  "pizza":  "cheese"
-
+  "catalogue_url":    "http://catalogue-dev.abdulqadir.shop:8080/",
+  "cart_url":    "http://cart-dev.abdulqadir.shop:8080/",
+  "user_url":    "http://user-dev.abdulqadir.shop:8080/",
+  "shipping_url":    "http://shipping-dev.abdulqadir.shop:8080/",
+  "payment_url":    "http://payment-dev.abdulqadir.shop:8080/",
 }
 EOT
 }
