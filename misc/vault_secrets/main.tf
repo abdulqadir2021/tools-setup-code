@@ -5,12 +5,6 @@ terraform {
     region = "us-east-1"
 
   }
-  required_providers {
-    vault = {
-      source  = "hashicorp/vault"
-      version = "4.3.0"
-    }
-  }
 }
 
 provider "vault" {
