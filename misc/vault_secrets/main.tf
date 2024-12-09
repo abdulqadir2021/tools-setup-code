@@ -32,7 +32,7 @@ resource "vault_generic_secret" "roboshop-dev" {
   "cart_url":    "http://cart-dev.abdulqadir.shop:8080/",
   "user_url":    "http://user-dev.abdulqadir.shop:8080/",
   "shipping_url":    "http://shipping-dev.abdulqadir.shop:8080/",
-  "payment_url":    "http://payment-dev.abdulqadir.shop:8080/",
+  "payment_url":    "http://payment-dev.abdulqadir.shop:8080/"
 }
 EOT
 }
