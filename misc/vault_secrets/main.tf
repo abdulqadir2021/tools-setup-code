@@ -22,7 +22,7 @@ resource "vault_mount" "roboshop-dev" {
   description = "Roboshop Dev Secrets"
 }
 
-resource "vault_generic_secret" "roboshop-dev" {
+resource "vault_generic_secret" "frontend" {
   path = "${vault_mount.roboshop-dev.path}/frontend"
 
   data_json = <<EOT
@@ -34,5 +34,92 @@ resource "vault_generic_secret" "roboshop-dev" {
   "shipping_url":    "http://shipping-dev.abdulqadir.shop:8080/",
   "payment_url":    "http://payment-dev.abdulqadir.shop:8080/"
 }
+EOT
+}
+
+resource "vault_generic_secret" "catalogue" {
+  path = "${vault_mount.roboshop-dev.path}/catalogue"
+
+  data_json = <<EOT
+{
+  "MONGO: "true",
+  "MONGO_URL" : "mongodb://mongodb-dev.abdulqadir.shop:27017/catalogue"
+}
+EOT
+}
+
+Environment=MONGO=true
+Environment=REDIS_URL='redis://redis-{{ env }}.abdulqadir.shop:6379'
+Environment=MONGO_URL="mongodb://mongodb-{{ env }}.abdulqadir.shop:27017/users"
+
+resource "vault_generic_secret" "user" {
+path = "${vault_mount.roboshop-dev.path}/user"
+
+data_json = <<EOT
+{
+  "MONGO: "true",
+  "MONGO_URL" : "mongodb://mongodb-dev.abdulqadir.shop:27017/users",
+} "REDIS_URL" : "redis://redis-dev.abdulqadir.shop:6379"
+EOT
+}
+
+resource "vault_generic_secret" "cart" {
+path = "${vault_mount.roboshop-dev.path}/cart"
+
+data_json = <<EOT
+{
+  "REDIS_HOST: "redis-dev.abdulqadir.shop",
+  "CATALOGUE_HOST" : "catalogue-dev.abdulqadir.shop",
+} "REDIS_URL" : "redis://redis-dev.abdulqadir.shop:6379"
+EOT
+}
+
+resource "vault_generic_secret" "shipping" {
+path = "${vault_mount.roboshop-dev.path}/shipping"
+
+data_json = <<EOT
+{
+  "CART_ENDPOINT: "cart-dev.abdulqadir.shop:8080",
+  "DB_HOST" : "mysql-dev.abdulqadir.shop",
+} "REDIS_URL" : "redis://redis-dev.abdulqadir.shop:6379"
+EOT
+}
+
+resource "vault_generic_secret" "payment" {
+path = "${vault_mount.roboshop-dev.path}/payment"
+
+data_json = <<EOT
+{
+  "CART_HOST" : "cart-dev.abdulqadir.shop",
+  "CART_PORT" : "8080",
+  "USER_HOST" : "user-dev.abdulqadir.shop",
+  "USER_PORT" : "8080",
+  "AMQP_HOST" : "rabbitmq-dev.abdulqadir.shop",
+  "AMQP_USER" : "roboshop",
+  "AMQP_PASS" : "roboshop123"
+}
+EOT
+}
+
+resource "vault_generic_secret" "mysql" {
+path = "${vault_mount.roboshop-dev.path}/mysql"
+
+data_json = <<EOT
+{
+  "MONGO: "true",
+  "MONGO_URL" : "mongodb://mongodb-dev.abdulqadir.shop:27017/users",
+  "REDIS_URL" : "redis://redis-dev.abdulqadir.shop:6379"
+}
+EOT
+}
+
+resource "vault_generic_secret" "rabbitmq" {
+path = "${vault_mount.roboshop-dev.path}/rabbitmq"
+
+data_json = <<EOT
+{
+  "MONGO: "true",
+  "MONGO_URL" : "mongodb://mongodb-dev.abdulqadir.shop:27017/users",
+} "REDIS_URL" : "redis://redis-dev.abdulqadir.shop:6379"
 EOT
 }
