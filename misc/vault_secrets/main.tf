@@ -70,7 +70,7 @@ data_json = <<EOT
 {
   "REDIS_HOST: "redis-dev.abdulqadir.shop",
   "CATALOGUE_HOST" : "catalogue-dev.abdulqadir.shop",
-} "REDIS_URL" : "redis://redis-dev.abdulqadir.shop:6379"
+}
 EOT
 }
 
@@ -81,7 +81,8 @@ data_json = <<EOT
 {
   "CART_ENDPOINT: "cart-dev.abdulqadir.shop:8080",
   "DB_HOST" : "mysql-dev.abdulqadir.shop",
-} "REDIS_URL" : "redis://redis-dev.abdulqadir.shop:6379"
+  "mysql_root_password" : "Roboshop@1"
+}
 EOT
 }
 
@@ -106,9 +107,7 @@ path = "${vault_mount.roboshop-dev.path}/mysql"
 
 data_json = <<EOT
 {
-  "MONGO: "true",
-  "MONGO_URL" : "mongodb://mongodb-dev.abdulqadir.shop:27017/users",
-  "REDIS_URL" : "redis://redis-dev.abdulqadir.shop:6379"
+  "mysql_root_password" : "Roboshop@1"
 }
 EOT
 }
@@ -118,8 +117,8 @@ path = "${vault_mount.roboshop-dev.path}/rabbitmq"
 
 data_json = <<EOT
 {
-  "MONGO: "true",
-  "MONGO_URL" : "mongodb://mongodb-dev.abdulqadir.shop:27017/users",
-} "REDIS_URL" : "redis://redis-dev.abdulqadir.shop:6379"
+  "user" : "roboshop",
+  "password" : "roboshop123"
+}
 EOT
 }
