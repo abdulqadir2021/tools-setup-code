@@ -48,20 +48,21 @@ EOT
 }
 
 resource "vault_generic_secret" "user" {
-path = "${vault_mount.roboshop-dev.path}/user"
+  path = "${vault_mount.roboshop-dev.path}/user"
 
-data_json = <<EOT
+  data_json = <<EOT
 {
   "MONGO": "true",
   "MONGO_URL" : "mongodb://mongodb-dev.abdulqadir.shop:27017/users",
-} "REDIS_URL" : "redis://redis-dev.abdulqadir.shop:6379"
+  "REDIS_URL" : "redis://redis-dev.abdulqadir.shop:6379"
+}
 EOT
 }
 
 resource "vault_generic_secret" "cart" {
-path = "${vault_mount.roboshop-dev.path}/cart"
+  path = "${vault_mount.roboshop-dev.path}/cart"
 
-data_json = <<EOT
+  data_json = <<EOT
 {
   "REDIS_HOST": "redis-dev.abdulqadir.shop",
   "CATALOGUE_HOST" : "catalogue-dev.abdulqadir.shop",
@@ -70,9 +71,9 @@ EOT
 }
 
 resource "vault_generic_secret" "shipping" {
-path = "${vault_mount.roboshop-dev.path}/shipping"
+  path = "${vault_mount.roboshop-dev.path}/shipping"
 
-data_json = <<EOT
+  data_json = <<EOT
 {
   "CART_ENDPOINT": "cart-dev.abdulqadir.shop:8080",
   "DB_HOST" : "mysql-dev.abdulqadir.shop",
