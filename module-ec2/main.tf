@@ -43,7 +43,6 @@ resource "aws_instance" "instance" {
     spot_options {
       instance_interruption_behavior  = "stop"
       spot_instance_type = "persistent"
-
     }
   }
 }
