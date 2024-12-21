@@ -32,3 +32,8 @@
   ansible.builtin.dnf:
     name: libicu
     state: installed
+
+- name: Get token
+  ansible.builtin.shell:  gh api --method POST -H "Accept: aptions/runners/registration-token | jq .token
+  register: token
+
