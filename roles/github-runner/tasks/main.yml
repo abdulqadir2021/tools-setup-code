@@ -1,10 +1,8 @@
 # following steps need to be run manually as ec2-user
-
 # sudo curl -L -o /etc/yum.repos.d/gh-cli.repo https://cli.github.com/packages/rpm/gh-cli.repo
-
 # sudo dnf install gh -y
-
 # gh auth login -s admin:org
+
 
 - name: Set-Prompt
   ansible.builtin.shell: set-prompt {{ tool_name }}
@@ -40,7 +38,8 @@
   become_user: ec2-user
 
 - name: Register runner
-  ansible.builtin.shell: ./config.sh --unattended --url https://github.com/abdulqadir2021 --token {{ token.stdout }} --name ${{ ansible_hostname }} --runnergroup Default
+  ansible.builtin.shell: |
+    ./config.sh --unattended --url https://github.com/abdulqadir2021 --token {{ token.stdout }} --name {{ ansible_hostname }} --runnergroup Default
   become_user: github-runner
   args:
     chdir: /actions-runner
@@ -50,7 +49,6 @@
   ansible.builtin.copy:
     src: github-runner.service
     dest: /etc/systemd/system/github-runner.service
-    remote_src: no
 
 - name: Start Runner service
   ansible.builtin.systemd_service:
@@ -63,7 +61,6 @@
   ansible.builtin.get_url:
     url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
     dest: /etc/yum.repos.d/hashicorp.repo
-    remote_src: no
 
 - name: Install Terraform
   ansible.builtin.dnf:
