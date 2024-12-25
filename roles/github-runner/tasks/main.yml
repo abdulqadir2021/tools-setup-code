@@ -50,7 +50,7 @@
   ansible.builtin.copy:
     src: github-runner.service
     dest: /etc/systemd/system/github-runner.service
-    remote_src: yes
+    remote_src: no
 
 - name: Start Runner service
   ansible.builtin.systemd_service:
@@ -63,7 +63,7 @@
   ansible.builtin.get_url:
     url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
     dest: /etc/yum.repos.d/hashicorp.repo
-    remote_src: yes
+    remote_src: no
 
 - name: Install Terraform
   ansible.builtin.dnf:
