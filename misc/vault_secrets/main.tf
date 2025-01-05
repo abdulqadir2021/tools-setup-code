@@ -66,6 +66,7 @@ resource "vault_generic_secret" "cart" {
 {
   "REDIS_HOST": "redis-dev.abdulqadir.shop",
   "CATALOGUE_HOST" : "catalogue-dev.abdulqadir.shop"
+  "CATALOGUE_PORT" : "8080"
 }
 EOT
 }
