@@ -31,7 +31,7 @@ resource "vault_generic_secret" "frontend" {
   "cart_url":    "http://cart-dev.abdulqadir.shop:8080/",
   "user_url":    "http://user-dev.abdulqadir.shop:8080/",
   "shipping_url":    "http://shipping-dev.abdulqadir.shop:8080/",
-  "payment_url":    "http://payment-dev.abdulqadir.shop:8080/"
+  "payment_url":    "http://payment-dev.abdulqadir.shop:8080/",
   "CATALOGUE_HOST" : "catalogue-dev.abdulqadir.shop",
   "CATALOGUE_PORT" : 8080,
   "USER_HOST" : "user-dev.abdulqadir.shop",
@@ -79,7 +79,7 @@ resource "vault_generic_secret" "cart" {
   data_json = <<EOT
 {
   "REDIS_HOST": "redis-dev.abdulqadir.shop",
-  "CATALOGUE_HOST" : "catalogue-dev.abdulqadir.shop",
+  "CATALOGUE_HOST" : "catalogue"  ,
   "CATALOGUE_PORT" : "8080"
 }
 EOT
@@ -90,12 +90,12 @@ resource "vault_generic_secret" "shipping" {
 
   data_json = <<EOT
 {
-  "CART_ENDPOINT": "cart-dev.abdulqadir.shop:8080",
+  "CART_ENDPOINT": "cart:8080",
   "DB_HOST" : "mysql-dev.abdulqadir.shop",
-  "mysql_root_password" : "Roboshop@1"
-  "DB_TYPE": "mysql"
+  "mysql_root_password" : "Roboshop@1",
+  "DB_TYPE": "mysql",
   "APP_GIT_URL": "https://github.com/roboshop-devops-project-v3/shipping",
-  "DB_USER": "root"
+  "DB_USER": "root",
   "DB_PASS": "Roboshop@1"
 }
 EOT
@@ -106,9 +106,9 @@ path = "${vault_mount.roboshop-dev.path}/payment"
 
 data_json = <<EOT
 {
-  "CART_HOST" : "cart-dev.abdulqadir.shop",
+  "CART_HOST" : "cart",
   "CART_PORT" : "8080",
-  "USER_HOST" : "user-dev.abdulqadir.shop",
+  "USER_HOST" : "user",
   "USER_PORT" : "8080",
   "AMQP_HOST" : "rabbitmq-dev.abdulqadir.shop",
   "AMQP_USER" : "roboshop",
