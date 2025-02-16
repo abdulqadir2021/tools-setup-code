@@ -32,6 +32,16 @@ resource "vault_generic_secret" "frontend" {
   "user_url":    "http://user-dev.abdulqadir.shop:8080/",
   "shipping_url":    "http://shipping-dev.abdulqadir.shop:8080/",
   "payment_url":    "http://payment-dev.abdulqadir.shop:8080/"
+  "CATALOGUE_HOST" : "catalogue-dev.abdulqadir.shop",
+  "CATALOGUE_PORT" : 8080,
+  "USER_HOST" : "user-dev.abdulqadir.shop",
+  "USER_PORT" : 8080,
+  "CART_HOST" : "cart-dev.abdulqadir.shop",
+  "CART_PORT" : 8080,
+  "SHIPPING_HOST" : "shipping-dev.abdulqadir.shop",
+  "SHIPPING_PORT" : 8080,
+  "PAYMENT_HOST" : "payment-dev.abdulqadir.shop",
+  "PAYMENT_PORT" : 8080
 }
 EOT
 }
