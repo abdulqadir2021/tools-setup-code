@@ -83,6 +83,10 @@ resource "vault_generic_secret" "shipping" {
   "CART_ENDPOINT": "cart-dev.abdulqadir.shop:8080",
   "DB_HOST" : "mysql-dev.abdulqadir.shop",
   "mysql_root_password" : "Roboshop@1"
+  "DB_TYPE": "mysql"
+  "APP_GIT_URL": "https://github.com/roboshop-devops-project-v3/shipping",
+  "DB_USER": "root"
+  "DB_PASS": "Roboshop@1"
 }
 EOT
 }
