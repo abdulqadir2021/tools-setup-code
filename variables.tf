@@ -19,7 +19,7 @@ variable "tools" {
 }
 
 variable "zone_id" {
-  default = "Z02974211891Z1NYIJSTE"
+  default = "Z0272961EHM02ZV0QE8D"
 
 }
 
