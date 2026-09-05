@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "vault" {
-  address = "http://vault-internal.abdulqadir.shop:8200"
+  address = "http://vault-internal.yeloabhi.fun:8200"
   token   = var.vault_token
   skip_tls_verify = true
 }
@@ -27,20 +27,20 @@ resource "vault_generic_secret" "frontend" {
 
   data_json = <<EOT
 {
-  "catalogue_url":    "http://catalogue-dev.abdulqadir.shop:8080/",
-  "cart_url":    "http://cart-dev.abdulqadir.shop:8080/",
-  "user_url":    "http://user-dev.abdulqadir.shop:8080/",
-  "shipping_url":    "http://shipping-dev.abdulqadir.shop:8080/",
-  "payment_url":    "http://payment-dev.abdulqadir.shop:8080/",
-  "CATALOGUE_HOST" : "catalogue-dev.abdulqadir.shop",
+  "catalogue_url":    "http://catalogue-dev.yeloabhi.fun:8080/",
+  "cart_url":    "http://cart-dev.yeloabhi.fun:8080/",
+  "user_url":    "http://user-dev.yeloabhi.fun:8080/",
+  "shipping_url":    "http://shipping-dev.yeloabhi.fun:8080/",
+  "payment_url":    "http://payment-dev.yeloabhi.fun:8080/",
+  "CATALOGUE_HOST" : "catalogue-dev.yeloabhi.fun",
   "CATALOGUE_PORT" : 8080,
-  "USER_HOST" : "user-dev.abdulqadir.shop",
+  "USER_HOST" : "user-dev.yeloabhi.fun",
   "USER_PORT" : 8080,
-  "CART_HOST" : "cart-dev.abdulqadir.shop",
+  "CART_HOST" : "cart-dev.yeloabhi.fun",
   "CART_PORT" : 8080,
-  "SHIPPING_HOST" : "shipping-dev.abdulqadir.shop",
+  "SHIPPING_HOST" : "shipping-dev.yeloabhi.fun",
   "SHIPPING_PORT" : 8080,
-  "PAYMENT_HOST" : "payment-dev.abdulqadir.shop",
+  "PAYMENT_HOST" : "payment-dev.yeloabhi.fun",
   "PAYMENT_PORT" : 8080
 }
 EOT
@@ -52,10 +52,10 @@ resource "vault_generic_secret" "catalogue" {
   data_json = <<EOT
 {
   "MONGO": "true",
-  "MONGO_URL" : "mongodb://mongodb-dev.abdulqadir.shop:27017/catalogue",
+  "MONGO_URL" : "mongodb://mongodb-dev.yeloabhi.fun:27017/catalogue",
   "DB_TYPE": "mongo",
   "APP_GIT_URL": "https://github.com/roboshop-devops-project-v3/catalogue",
-  "DB_HOST": "mongodb-dev.abdulqadir.shop",
+  "DB_HOST": "mongodb-dev.yeloabhi.fun",
   "SCHEMA_FILE": "db/master-data.js"
 }
 EOT
@@ -67,8 +67,8 @@ resource "vault_generic_secret" "user" {
   data_json = <<EOT
 {
   "MONGO": "true",
-  "MONGO_URL" : "mongodb://mongodb-dev.abdulqadir.shop:27017/users",
-  "REDIS_URL" : "redis://redis-dev.abdulqadir.shop:6379"
+  "MONGO_URL" : "mongodb://mongodb-dev.yeloabhi.fun:27017/users",
+  "REDIS_URL" : "redis://redis-dev.yeloabhi.fun:6379"
 }
 EOT
 }
@@ -78,7 +78,7 @@ resource "vault_generic_secret" "cart" {
 
   data_json = <<EOT
 {
-  "REDIS_HOST": "redis-dev.abdulqadir.shop",
+  "REDIS_HOST": "redis-dev.yeloabhi.fun",
   "CATALOGUE_HOST" : "catalogue",
   "CATALOGUE_PORT" : "8080"
 }
@@ -91,7 +91,7 @@ resource "vault_generic_secret" "shipping" {
   data_json = <<EOT
 {
   "CART_ENDPOINT": "cart:8080",
-  "DB_HOST" : "mysql-dev.abdulqadir.shop",
+  "DB_HOST" : "mysql-dev.yeloabhi.fun",
   "mysql_root_password" : "Roboshop@1",
   "DB_TYPE": "mysql",
   "APP_GIT_URL": "https://github.com/roboshop-devops-project-v3/shipping",
@@ -110,7 +110,7 @@ data_json = <<EOT
   "CART_PORT" : "8080",
   "USER_HOST" : "user",
   "USER_PORT" : "8080",
-  "AMQP_HOST" : "rabbitmq-dev.abdulqadir.shop",
+  "AMQP_HOST" : "rabbitmq-dev.yeloabhi.fun",
   "AMQP_USER" : "roboshop",
   "AMQP_PASS" : "roboshop123"
 }

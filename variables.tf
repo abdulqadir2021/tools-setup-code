@@ -24,5 +24,5 @@ variable "zone_id" {
 }
 
 variable "domain_name" {
-  default = "abdulqadir.shop"
+  default = "yeloabhi.fun"
 }
